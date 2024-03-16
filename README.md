@@ -1,5 +1,6 @@
 # StudentRegistrationForm
 Simple GUI
 
-![image](https://github.com/ChristianJude23/StudentRegistrationForm/assets/152279955/b0b8ccc2-2d68-4ad0-a852-739d1886d820)
+![image](https://github.com/ChristianJude23/StudentRegistrationForm/assets/152279955/39553050-b78f-4031-bf09-8c62b9726433)
+
 
