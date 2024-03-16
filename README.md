@@ -6,4 +6,5 @@ Simple GUI
 Task: <br>
 ✔ GUI <br>
 ❌Function <br>
+❌Msg Box For Result <br>
 ❌Add more Courses <br>
