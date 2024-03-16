@@ -1,5 +1,5 @@
 import tkinter as tk
-
+from tkinter import messagebox
 class MsgBox:
     def __init__(self, widget_value):
         #Access widgets from another class
@@ -35,13 +35,36 @@ class MsgBox:
         if self.window_widgets.menu3.get() == True:
             self.subject_txt += "FCL 3\n"
 
+        #Create MsgBpox
+        self.createMsgBox()
+
         #Debugging
-        print(self.name)
-        print(self.number)
-        print(self.gender)
-    
+        # print(self.name)
+        # print(self.number)
+        # print(self.gender)
+        # print(self.subject_txt)
+
+    def createMsgBox(self):
+        msg = f"Student Name: {self.name}\nStudent Number: {self.number}\nGender: {self.gender}\nSubjects: \n{self.subject_txt}"
+        messagebox.showinfo("Student Registration Form", msg)
+
     def clear(self):
-        pass
+        #Return to Default Value
+        self.name = ""
+        self.number = ""
+        self.gender = ""
+        self.gender_others = ""
+        self.subject_txt = ""
+
+        #Delete Values in Entry Field
+        self.window_widgets.ent_studentName.delete(0, tk.END)
+        self.window_widgets.ent_studentNumber.delete(0, tk.END)
+
+        self.window_widgets.radio1.set(-1)
+        self.window_widgets.ck_btn_programming2.deselect()
+        self.window_widgets.ck_btn_scriptWriting.deselect()
+        self.window_widgets.ck_btn_FCL3.deselect()
+
 class Window:
     def __init__(self):
         #Access widgets to another class
@@ -114,22 +137,22 @@ class Window:
         rd_btn_others.place(x=300, y=120)
 
         #Checkbutton
-        ck_btn_programming2 = tk.Checkbutton(self.frame1, text="Programming 2", font=("Arial", 16), 
-                                             bg="#DED9E2", activebackground="#DED9E2")
-        ck_btn_scriptWriting = tk.Checkbutton(self.frame1, text="Scriptwriting and Story Boarding", font=("Arial", 16), 
-                                              bg="#DED9E2", activebackground="#DED9E2")
-        ck_btn_FCL3 = tk.Checkbutton(self.frame1, text="FCL 3", font=("Arial", 16), bg="#DED9E2", activebackground="#DED9E2")
+        self.ck_btn_programming2 = tk.Checkbutton(self.frame1, text="Programming 2", font=("Arial", 16), 
+                                             bg="#DED9E2", activebackground="#DED9E2", variable=self.menu1)
+        self.ck_btn_scriptWriting = tk.Checkbutton(self.frame1, text="Scriptwriting and Story Boarding", font=("Arial", 16), 
+                                              bg="#DED9E2", activebackground="#DED9E2", variable=self.menu2)
+        self.ck_btn_FCL3 = tk.Checkbutton(self.frame1, text="FCL 3", font=("Arial", 16), bg="#DED9E2", activebackground="#DED9E2", variable=self.menu3)
 
         #Checkbutton pos
-        ck_btn_programming2.place(x=30, y=230)
-        ck_btn_scriptWriting.place(x=30, y=260)
-        ck_btn_FCL3.place(x=30, y=290)
+        self.ck_btn_programming2.place(x=30, y=230)
+        self.ck_btn_scriptWriting.place(x=30, y=260)
+        self.ck_btn_FCL3.place(x=30, y=290)
 
         #Button
         btn_proceed = tk.Button(self.frame1, text="Proceed", font=("Arial", 16), bg="#F7F4EA", 
                                 activebackground="#8DA9C4", width=15, command=self.msgbox.getInfo)
         btn_clear = tk.Button(self.frame1, text="Clear Forms", font=("Arial", 8), bg="#F7F4EA", 
-                              activebackground="#8DA9C4", width=10)
+                              activebackground="#8DA9C4", width=10, command=self.msgbox.clear)
 
         #Button pos
         btn_proceed.place(x=125, y=350)
