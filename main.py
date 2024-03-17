@@ -65,6 +65,10 @@ class MsgBox:
         self.window_widgets.ck_btn_scriptWriting.deselect()
         self.window_widgets.ck_btn_FCL3.deselect()
 
+        self.window_widgets.lbl_gender_others.place_forget()
+        self.window_widgets.ent_gender_others.delete(0, tk.END)
+        self.window_widgets.ent_gender_others.place_forget()
+
 class Window:
     def __init__(self):
         #Access widgets to another class
